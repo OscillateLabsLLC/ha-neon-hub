@@ -1,0 +1,27 @@
+# Throwaway Home Assistant for live-testing the integration.
+#
+#   cd dev && docker compose up -d
+#   open http://localhost:8123   (first run: create a local account)
+#   Settings -> Devices & Services -> Add Integration -> Neon Hub
+#
+# The component is mounted read-only from the repo, so code edits only need
+# a container restart (docker compose restart) to take effect.
+#
+# extra_hosts pins the hub's mDNS name to its LAN IP because .local names
+# don't resolve inside Docker on macOS. Update the IP if the hub moves.
+# Zeroconf discovery also can't cross Docker's NAT - add the integration
+# manually.
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    container_name: ha-neon-hub-dev
+    ports:
+      - "8123:8123"
+    volumes:
+      - ./config:/config
+      - ../custom_components/neon_hub:/config/custom_components/neon_hub:ro
+    environment:
+      - TZ=America/Chicago
+    extra_hosts:
+      - "hana.neon-hub.local:192.168.86.63"
+    restart: unless-stopped

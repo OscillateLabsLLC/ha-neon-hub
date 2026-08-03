@@ -1,0 +1,7 @@
+{
+  "name": "Neon Hub",
+  "hacs": "1.6.0",
+  "render_readme": true,
+  "homeassistant": "2025.2.0",
+  "content_in_root": false
+}

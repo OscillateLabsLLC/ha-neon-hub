@@ -1,0 +1,105 @@
+# Tracks this integration against the Home Assistant integration quality scale.
+# https://developers.home-assistant.io/docs/core/integration-quality-scale/
+# The official scale only applies to core integrations; this file documents
+# how this custom integration measures up rule by rule.
+rules:
+  # Bronze
+  action-setup:
+    status: exempt
+    comment: No custom service actions; only built-in entity services.
+  appropriate-polling:
+    status: done
+    comment: Coordinator polls two unauthenticated endpoints every 60s.
+  brands:
+    status: done
+    comment: >
+      Local brand assets ship in brand/ and are served via the HA 2026.3+
+      brands proxy; brands-repo CDN submission is the legacy mechanism and
+      is intentionally not used.
+  common-modules:
+    status: done
+    comment: api.py client, coordinator.py, entity.py base class.
+  config-flow: done
+  config-flow-test-coverage: done
+  dependency-transparency:
+    status: done
+    comment: No requirements; uses Home Assistant's bundled aiohttp.
+  docs-actions:
+    status: exempt
+    comment: No custom service actions.
+  docs-high-level-description: done
+  docs-installation-instructions: done
+  docs-removal-instructions: done
+  entity-event-setup:
+    status: exempt
+    comment: Entities do not subscribe to external events.
+  entity-unique-id: done
+  has-entity-name: done
+  runtime-data: done
+  test-before-configure: done
+  test-before-setup: done
+  unique-config-entry:
+    status: done
+    comment: Unique ID is the stable hub_id from GET /hub/identity.
+
+  # Silver
+  action-exceptions:
+    status: done
+    comment: TTS failures raise HomeAssistantError with translation keys.
+  config-entry-unloading: done
+  docs-configuration-parameters: done
+  docs-installation-parameters: done
+  entity-unavailable:
+    status: done
+    comment: All entities derive availability from the coordinator.
+  integration-owner: done
+  log-when-unavailable:
+    status: done
+    comment: DataUpdateCoordinator logs once when polling starts failing.
+  parallel-updates: done
+  reauthentication-flow: done
+  test-coverage: done
+
+  # Gold
+  devices: done
+  diagnostics: done
+  discovery:
+    status: done
+    comment: Zeroconf discovery of the hub's _neon-hub._tcp mDNS service.
+  discovery-update-info:
+    status: done
+    comment: Discovery updates the stored host when the hub_id matches.
+  docs-data-update: done
+  docs-examples: done
+  docs-known-limitations: done
+  docs-supported-devices: done
+  docs-supported-functions: done
+  docs-troubleshooting: done
+  docs-use-cases: done
+  dynamic-devices:
+    status: exempt
+    comment: One hub device per config entry; nothing appears dynamically.
+  entity-category: done
+  entity-device-class:
+    status: done
+    comment: Connectivity class on the ready binary sensor; others have none.
+  entity-disabled-by-default:
+    status: exempt
+    comment: All entities are primary or low-churn diagnostics.
+  entity-translations: done
+  exception-translations: done
+  icon-translations:
+    status: exempt
+    comment: Domain default icons suffice for every entity.
+  reconfiguration-flow: done
+  repair-issues:
+    status: exempt
+    comment: No repairable conditions; failures surface via setup retry/reauth.
+  stale-devices:
+    status: exempt
+    comment: The only device is removed with its config entry.
+
+  # Platinum
+  async-dependency: done
+  inject-websession: done
+  strict-typing: done

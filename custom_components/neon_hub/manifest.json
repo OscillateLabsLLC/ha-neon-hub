@@ -1,0 +1,13 @@
+{
+  "domain": "neon_hub",
+  "name": "Neon Hub",
+  "codeowners": ["@OscillateLabsLLC"],
+  "config_flow": true,
+  "documentation": "https://github.com/OscillateLabsLLC/ha-neon-hub",
+  "integration_type": "hub",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/OscillateLabsLLC/ha-neon-hub/issues",
+  "requirements": [],
+  "version": "0.1.0",
+  "zeroconf": ["_neon-hub._tcp.local."]
+}

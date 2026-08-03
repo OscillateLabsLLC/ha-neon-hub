@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+.coverage
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+# dev HA instance state; only the seed configuration.yaml is tracked
+dev/config/*
+!dev/config/configuration.yaml

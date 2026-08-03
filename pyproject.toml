@@ -1,0 +1,69 @@
+[project]
+name = "ha-neon-hub"
+version = "0.1.0"
+description = "Home Assistant custom integration for Neon Hub (HANA API)"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.13.2"
+dependencies = []
+
+[dependency-groups]
+dev = [
+  "pytest-homeassistant-custom-component>=0.13.316",
+  "pytest-cov",
+  # requirements of HA's tts/ffmpeg components, needed to import tts in tests
+  "mutagen",
+  "ha-ffmpeg",
+  # conversation platform deps, pinned to HA's package_constraints
+  "hassil==3.5.0",
+  "home-assistant-intents==2026.1.28",
+  "mypy",
+  "ruff",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.coverage.run]
+source = ["custom_components.neon_hub"]
+
+[tool.coverage.report]
+fail_under = 95
+show_missing = true
+
+[tool.ruff]
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+  "B",      # bugbear
+  "C4",     # comprehensions
+  "D",      # docstrings
+  "E",      # pycodestyle errors
+  "F",      # pyflakes
+  "I",      # isort
+  "N",      # naming
+  "PL",     # pylint
+  "RUF",    # ruff-specific
+  "SIM",    # simplify
+  "UP",     # pyupgrade
+  "W",      # pycodestyle warnings
+]
+ignore = [
+  "D203",   # incompatible with D211
+  "D213",   # incompatible with D212
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D", "PLR2004"]
+"test_integration.py" = ["D", "E501", "PLR2004", "PLW1510"]
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+files = ["custom_components/neon_hub"]
+
+[[tool.mypy.overrides]]
+module = "homeassistant.*"
+follow_imports = "silent"

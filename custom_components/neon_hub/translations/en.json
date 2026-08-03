@@ -1,0 +1,127 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Neon Hub",
+        "description": "Connect to a Neon Hub to use its voice assistant, speech, and LLM services in Home Assistant.",
+        "data": {
+          "host": "Host",
+          "username": "Username",
+          "password": "Password",
+          "verify_ssl": "Verify SSL certificate"
+        },
+        "data_description": {
+          "host": "Hostname or full address (including the scheme) of the hub's HANA API, e.g. the hana alias advertised by the hub.",
+          "username": "Hub user account for Home Assistant to authenticate as.",
+          "password": "Password for the hub user account.",
+          "verify_ssl": "Disabled by default because Neon Hub ships with a self-signed certificate."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reauthenticate with Neon Hub",
+        "description": "The hub rejected the stored credentials. Enter valid credentials to continue.",
+        "data": {
+          "username": "Username",
+          "password": "Password"
+        },
+        "data_description": {
+          "username": "Hub user account for Home Assistant to authenticate as.",
+          "password": "Password for the hub user account."
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure Neon Hub",
+        "description": "Update the connection settings for your Neon Hub.",
+        "data": {
+          "host": "Host",
+          "username": "Username",
+          "password": "Password",
+          "verify_ssl": "Verify SSL certificate"
+        },
+        "data_description": {
+          "host": "Hostname or full address (including the scheme) of the hub's HANA API.",
+          "username": "Hub user account for Home Assistant to authenticate as.",
+          "password": "Password for the hub user account.",
+          "verify_ssl": "Disabled by default because Neon Hub ships with a self-signed certificate."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to connect to the Neon Hub. Verify the host is correct and the hub is running.",
+      "invalid_auth": "The hub rejected the username or password.",
+      "unknown": "An unexpected error occurred."
+    },
+    "abort": {
+      "already_configured": "This Neon Hub is already configured.",
+      "cannot_connect": "Unable to connect to the discovered Neon Hub.",
+      "reauth_successful": "Reauthentication successful.",
+      "reconfigure_successful": "Reconfiguration successful.",
+      "unique_id_mismatch": "The hub at this address reports a different hub identity than the one originally configured."
+    },
+    "flow_title": "{name}"
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Neon Hub options",
+        "data": {
+          "llm_backend": "LLM backend",
+          "tts_gender": "TTS voice gender",
+          "language": "Language"
+        },
+        "data_description": {
+          "llm_backend": "Which hub LLM endpoint the LLM conversation agent queries. The backend must be deployed on your hub.",
+          "tts_gender": "Preferred voice gender for speech synthesis.",
+          "language": "BCP-47 style language code used for speech services, e.g. en-us."
+        }
+      }
+    }
+  },
+  "entity": {
+    "tts": {
+      "tts": {
+        "name": "Text-to-Speech"
+      }
+    },
+    "stt": {
+      "stt": {
+        "name": "Speech-to-Text"
+      }
+    },
+    "conversation": {
+      "assistant": {
+        "name": "Assistant"
+      },
+      "llm": {
+        "name": "LLM"
+      }
+    },
+    "binary_sensor": {
+      "ready": {
+        "name": "Ready"
+      }
+    },
+    "sensor": {
+      "version": {
+        "name": "Version"
+      },
+      "tts_engine": {
+        "name": "TTS engine"
+      },
+      "stt_engine": {
+        "name": "STT engine"
+      },
+      "llm_persona": {
+        "name": "LLM persona"
+      }
+    }
+  },
+  "exceptions": {
+    "cannot_connect": {
+      "message": "Unable to reach the Neon Hub at {base_url}."
+    },
+    "synthesize_failed": {
+      "message": "The Neon Hub failed to synthesize speech."
+    }
+  }
+}
