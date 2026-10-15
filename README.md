@@ -1,6 +1,6 @@
 # Neon Hub for Home Assistant
 
-[![Status: Proof of Concept](https://img.shields.io/badge/status-proof--of--concept-orange)](https://github.com/OscillateLabsLLC/.github/blob/main/SUPPORT_STATUS.md)
+[![Status: Active](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/OscillateLabsLLC/.github/blob/main/SUPPORT_STATUS.md)
 [![License: BSD-3-Clause](https://img.shields.io/badge/license-BSD--3--Clause-blue)](LICENSE)
 
 A Home Assistant custom integration for [Neon Hub](https://neon.ai), the
