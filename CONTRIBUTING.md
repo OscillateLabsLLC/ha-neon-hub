@@ -1,7 +1,7 @@
 # Contributing
 
-Thanks for your interest! This project is a proof of concept and maintained on
-a best-effort basis.
+Thanks for your interest! This project is actively maintained. Bug reports,
+feature requests, and pull requests are welcome.
 
 ## Development setup
 
